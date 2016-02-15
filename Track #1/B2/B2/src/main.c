@@ -41,13 +41,17 @@ void wait(int ms)
 }
 int main (void)
 {
-	/* Insert system clock initialization code here (sysclk_init()). */
+	/* alle poorten op output zetten */
 	DDRD = 0b11111111;
 	while(1)
 	{
+		/* de led op 6 en 7 aan zetten */
 		PORTD = 0x60;
+		/* 500 ms wachten */
 		wait(500);
+		/* de leds uit zetten */
 		PORTD = 0x00;
+		/* 500 ms wachten */	
 		wait(500);
 	}
 	
