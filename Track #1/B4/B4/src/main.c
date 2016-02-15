@@ -42,6 +42,7 @@ int main (void)
 {
 	DDRD = 0b11111111;
 
+	/* zet de eerste led aan */
 	PORTD = 0x01;
 	while(1)
 	{
