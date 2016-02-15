@@ -51,13 +51,15 @@ int main (void)
 	DDRC = 0b00000000;
 	while (1)
 	{
-		if(PINC & 0x01)//Switch from slow to fast or fast to slow if pinc is pressed
+		/* schakel van snel naar langzaam als PINC kort word ingedrukt */
+		if(PINC & 0x01) 
 		{
 			if(state == LED_SLOW)
 				state = LED_FAST;
 			else
 				state = LED_SLOW; 
 		}
+		/* switch case voor langzaam en snel */
 		switch(state){
 		case LED_SLOW:
 		PORTD = 0x40;
