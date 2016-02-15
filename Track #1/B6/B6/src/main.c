@@ -31,6 +31,13 @@
 #include <asf.h>
 #include <util/delay.h>
 
+enum states {
+	LED_SLOW,
+	LED_FAST
+};
+
+enum states state = LED_SLOW;
+
 void wait( int ms )
 {
 	for (int i=0; i<ms; i++)
@@ -44,19 +51,26 @@ int main (void)
 	DDRC = 0b00000000;
 	while (1)
 	{
-		if(PINC & 0x01)
+		if(PINC & 0x01)//Switch from slow to fast or fast to slow if pinc is pressed
 		{
-		PORTD = 0x40;
-		wait( 125 );
-		PORTD = 0x00;
-		wait( 125 );
+			if(state == LED_SLOW)
+				state = LED_FAST;
+			else
+				state = LED_SLOW; 
 		}
-		else
-		{
+		switch(state){
+		case LED_SLOW:
 		PORTD = 0x40;
 		wait( 500 );
 		PORTD = 0x00;
 		wait( 500 );
+		break;
+		case LED_FAST:
+		PORTD = 0x40;
+		wait( 125 );
+		PORTD = 0x00;
+		wait( 125 );
+		break;	
 		}
 	}
 	return 1;
