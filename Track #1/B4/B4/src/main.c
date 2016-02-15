@@ -41,10 +41,11 @@ void wait(int ms)
 int main (void)
 {
 	DDRD = 0b11111111;
-	/* Insert system clock initialization code here (sysclk_init()). */
+
 	PORTD = 0x01;
 	while(1)
 	{
+		/* als de achtste let aan staat wacht 50 ms en zet de eerste led aan */
 		if(PORTD == 0x80)
 		{
 			wait(50);
