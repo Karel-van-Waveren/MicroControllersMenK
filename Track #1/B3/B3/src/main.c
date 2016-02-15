@@ -40,14 +40,16 @@ void wait( int ms )
 }
 int main( void )
 {
-	/* Insert system clock initialization code here (sysclk_init()). */
+	/* alle poorten op rij d op output zetten en de poorten op rij c op input zetten */
 	DDRD = 0b11111111;
 	DDRC = 0b00000000;
 	
 	while(1)
 	{
+		/* als PINC wordt ingedrukt */
 		if(PINC & 0x01)
 		{
+			/* laat led knipperen */
 			PORTD = 0x40;
 			wait( 500 );
 			PORTD = 0x00;
