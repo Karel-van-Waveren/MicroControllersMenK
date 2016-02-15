@@ -37,7 +37,7 @@ typedef struct {
 	unsigned char data;
 	unsigned int delay;
 } PATTERN_STRUCT;
-
+/* creeer een struct */
 PATTERN_STRUCT pattern[] = {
 	{0x00, 100}, {0x01, 100}, {0x03, 100}, {0x07, 100}, {0xF, 100}, {0x1F, 100}, {0x3F, 100}, {0x7F, 100}, {0xFF,100},
 	{0x00, 100},
@@ -64,20 +64,19 @@ void wait( int ms )
 
 int main (void)
 {
-	
-	DDRD = 0b11111111;					// PORTD all output
+	DDRD = 0b11111111;
 	
 	while (1==1)
 	{
-		// Set index to begin of pattern array
+		/* zet de index op het begin van de pattern array */
 		int index = 0;
-		// as long as delay has meaningful content
+		/* zolang er een nuttige waarde in staat */
 		while( pattern[index].delay != 0 ) {
-			// Write data to PORTD
+			/* schrijf data naar PORTD
 			PORTD = pattern[index].data;
-			// wait
+			/* wacht */
 			wait(pattern[index].delay);
-			// increment for next round
+			/* verhoog index met 1 */
 			index++;
 		}
 	}
