@@ -46,11 +46,11 @@ int main (void)
 	while(1)
 	{
 		/* de led op 6 en 7 aan zetten */
-		PORTD = 0x60;
+		PORTD = 0x40;
 		/* 500 ms wachten */
 		wait(500);
 		/* de leds uit zetten */
-		PORTD = 0x00;
+		PORTD = 0x20;
 		/* 500 ms wachten */	
 		wait(500);
 	}
