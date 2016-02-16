@@ -54,7 +54,7 @@ int main (void)
 		}
 		wait(50);
 		/* schuif de bit een plek op */
-		PORTD = PORTD<<1);
+		PORTD = PORTD<<1;
 	}
 	return 1;
 	/* Insert application code here, after the board has been initialized. */
