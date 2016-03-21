@@ -31,8 +31,11 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
+#include <stdio.h>
 
 #include "lcd.h"
+
+#define F_CPU 8000000;
 
 unsigned int counter = 0;
 
@@ -40,7 +43,7 @@ unsigned int counter = 0;
 void Lcd_WriteFirstLine(char * text){
 	set_cursor(0,1);
 	while(*text) {
-		lcd_writeChar(*text++);
+		lcd_writeLine1(*text++);
 	}
 }
 
@@ -48,7 +51,7 @@ void Lcd_WriteFirstLine(char * text){
 void Lcd_WriteSecondLine(char * text){
 	set_cursor(0,2);
 	while(*text) {
-		lcd_writeChar(*text++);
+		lcd_writeLine1(*text++);
 	}
 }
 
@@ -82,11 +85,12 @@ int main(void)
 	sei();
 
 	init(); //Initializeert LCD scherm in 4 bit mode
-
-	Lcd_WriteFirstLine("counter:         ");
-	while(1){
-		char str[5];
+	char str[5];	
+	lcd_writeLine1("Swag boy");
+	while(1)
+	{
+		set_cursor(0,2);
 		sprintf(str,"%d    ", counter); // schrijft de waarde van counter
-		Lcd_WriteSecondLine(str);
+		lcd_writeLine1(str);
 	}
 }

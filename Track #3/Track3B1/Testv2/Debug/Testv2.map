@@ -571,12 +571,12 @@ END GROUP
  .debug_frame   0x00000000       0x80 src/lcd.o
  .debug_frame   0x00000080       0x24 src/main.o
 
-.debug_str      0x00000000    0x10ec0
+.debug_str      0x00000000    0x10f01
  *(.debug_str)
  .debug_str     0x00000000    0x10ea5 src/lcd.o
                               0x11052 (size before relaxing)
- .debug_str     0x00010ea5       0x1b src/main.o
-                              0x1101e (size before relaxing)
+ .debug_str     0x00010ea5       0x5c src/main.o
+                              0x11020 (size before relaxing)
 
 .debug_loc      0x00000000      0x11d
  *(.debug_loc)

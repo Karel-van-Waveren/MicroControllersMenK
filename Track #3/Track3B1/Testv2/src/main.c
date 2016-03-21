@@ -36,7 +36,7 @@ int main (void)
 {
 	DDRD = 0xFF;
 	init();
-	lcd_writeLine1("Big Dick");
+	lcd_writeLine1("Swag boy");
 	while (1)
 	{
 		PORTC ^= (1<<6);
